@@ -1,0 +1,46 @@
+/* LoadingScreen.css */
+
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fff; /* Arrière-plan blanc */
+  position: relative;
+  overflow: hidden;
+}
+
+.logo {
+  width: 150px;
+  animation: dropAndBounce 2s ease forwards; /* Supprimé fadeOut */
+}
+
+.spinner {
+  margin-top: 20px;
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+}
+
+/* Animation pour faire tomber et rebondir le logo */
+@keyframes dropAndBounce {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(20px) rotate(360deg);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Supprimé l'animation fadeOut */

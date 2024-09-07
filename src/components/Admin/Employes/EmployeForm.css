@@ -1,0 +1,74 @@
+.employe-form-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #7882af;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .employe-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .close-button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: red; /* Couleur rouge pour la croix */
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: 20px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  input, select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+  
+  .submit-button {
+    align-self: center;
+    padding: 12px 40px;
+    background-color: #0660e6;
+    color: #e2e4e7;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 30px;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  

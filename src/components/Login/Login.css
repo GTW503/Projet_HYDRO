@@ -1,0 +1,215 @@
+/* Conteneur principal centré et prenant tout l'écran */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    background-color: #274e8d;
+    position: relative; /* Important pour le positionnement absolu de l'arrière-plan */
+    overflow: hidden; /* Masquer les débordements éventuels de l'animation */
+}
+
+/* Image de fond animée */
+.background-logo {
+    position: absolute;
+    width: 150px; /* Taille du logo */
+    opacity: 0.1; /* Rendre le logo très transparent pour ne pas gêner le contenu */
+    top: 0;
+    left: 0;
+    animation: danceAround 10s infinite linear; /* Animation du logo */
+}
+
+/* Animation du logo */
+@keyframes danceAround {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(80vw, 10vh) rotate(360deg);
+    }
+    50% {
+        transform: translate(80vw, 80vh) rotate(720deg);
+    }
+    75% {
+        transform: translate(10vw, 80vh) rotate(1080deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(1440deg);
+    }
+}
+
+/* Style de l'image */
+.login-image {
+    max-width: 700px; /* Ajustez selon vos besoins */
+    height: auto;
+    margin-right: 50px; /* Espace entre l'image et le formulaire */
+}
+
+/* Boîte de connexion avec fond bleu foncé */
+.login-box {
+    width: 350px;
+    padding: 40px;
+    background-color: #1a1a2e; /* Bleu foncé */
+    border-radius: 15px; /* Bords arrondis */
+    box-shadow: 0px 10px 30px rgba(250, 247, 250, 0.2); /* Ombre subtile pour un effet de profondeur */
+    color: white; /* Couleur du texte en blanc */
+    z-index: 2; /* Assure que le formulaire est au-dessus du logo en arrière-plan */
+}
+
+/* Style de l'image du logo dans le formulaire */
+.logo-image {
+    display: block;
+    margin: 0 auto 20px auto; /* Centre le logo et ajoute un espace en bas */
+    width: 100px; /* Ajustez la taille du logo selon vos besoins */
+    height: auto;
+}
+
+/* Animation du logo dans le formulaire */
+.animated-logo {
+    animation: rotateAndMove 4s infinite ease-in-out;
+}
+
+/* Animation de rotation et de mouvement */
+@keyframes rotateAndMove {
+    0% {
+        transform: rotate(0deg) translate(0, 0);
+    }
+    25% {
+        transform: rotate(45deg) translate(10px, -10px);
+    }
+    50% {
+        transform: rotate(90deg) translate(-10px, 10px);
+    }
+    75% {
+        transform: rotate(135deg) translate(5px, -5px);
+    }
+    100% {
+        transform: rotate(180deg) translate(0, 0);
+    }
+}
+
+/* Titre centré et avec espace */
+.login-box h2 {
+    margin-bottom: 20px;
+    color: white;
+    text-align: center;
+}
+
+/* Conteneur d'input avec espace */
+.input-container {
+    margin-bottom: 20px;
+}
+
+/* Label des champs */
+.input-container label {
+    display: block;
+    margin-bottom: 8px;
+    color: white; /* Couleur du texte en blanc */
+    font-weight: 600;
+}
+
+/* Champs de saisie stylisés */
+.input-container input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px; /* Bords arrondis */
+    border: 1px solid #ccc; /* Bordure subtile */
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Style des champs de saisie lors de la mise au point */
+.input-container input:focus {
+    outline: none;
+    border-color: #007bff; /* Bordure bleu clair lors de la mise au point */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Ombre bleue subtile */
+}
+
+/* Conteneur de la case à cocher */
+.remember-me-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Espace entre la case à cocher et son label */
+.remember-me-container input {
+    margin-right: 10px;
+}
+
+/* Case à cocher personnalisée */
+.remember-me-container input[type="checkbox"] {
+    appearance: none; /* Retire le style par défaut du navigateur */
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 2px solid #07498f; /* Bordure de la case à cocher */
+    background-color: #fff; /* Fond de la case à cocher */
+    position: relative;
+    cursor: pointer;
+}
+
+/* Case à cocher cochée */
+.remember-me-container input[type="checkbox"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background-color: #07498f; /* Couleur de la case cochée */
+    border-radius: 2px;
+}
+
+/* Bouton de connexion toujours bleu */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #07498f; /* Bleu vif pour le bouton */
+    color: rgb(1, 1, 32);
+    border: none;
+    border-radius: 8px; /* Bords arrondis */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: none; /* Enlève les transitions pour la couleur */
+}
+
+/* Style lors de la mise au point du bouton */
+button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Ombre bleue subtile */
+}
+
+/* Style du lien pour mot de passe oublié */
+.forgot-password {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Style du lien au survol */
+.forgot-password:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+/* Conteneur pour l'input mot de passe avec l'icône */
+.password-container {
+    position: relative;
+}
+
+/* Positionnement de l'icône de visibilité du mot de passe */
+.password-icon {
+    position: absolute;
+    right: 0px;
+    top: 75%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+}

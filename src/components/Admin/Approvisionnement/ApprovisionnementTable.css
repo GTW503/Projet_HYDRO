@@ -1,0 +1,67 @@
+.approvisionnement-table-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .table-header-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .close-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .print-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .approvisionnement-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .approvisionnement-table th,
+  .approvisionnement-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .approvisionnement-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  .approvisionnement-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .approvisionnement-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .action-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  

@@ -1,0 +1,79 @@
+.create-approvisionnement-container {
+    position: relative;
+    padding: 40px;
+    max-width: 900%; /* Utilise toute la largeur disponible */
+    max-height: 80vh; /* Limite la hauteur du formulaire à 80% de la hauteur de la fenêtre */
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    color: #333;
+    overflow-y: auto; /* Active la barre de défilement verticale si nécessaire */
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espacement entre les champs */
+    justify-content: space-between; /* Assure que les champs sont bien répartis */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 48%; /* Chaque champ occupe 48% de la largeur, pour avoir deux champs par ligne */
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+input,
+select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    width: 100%; /* Occupe toute la largeur de son conteneur */
+}
+
+.save-button {
+    align-self: center;
+    padding: 12px 40px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    width: 200px;
+    margin-top: 20px;
+}
+
+.save-button:hover {
+    background-color: #0056b3;
+}

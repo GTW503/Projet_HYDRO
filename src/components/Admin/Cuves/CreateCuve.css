@@ -1,0 +1,81 @@
+.create-cuve-container {
+    position: relative;
+    padding: 40px;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #e8ecec;
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(103, 199, 223, 0.3);
+    color: rgb(173, 139, 139);
+  }
+  
+  .close-button {
+    position: absolute; /* Change le positionnement en absolu */
+    top: 10px;          /* Place à 10px du haut du conteneur */
+    right: 10px;        /* Place à 10px du bord droit */
+    background-color: transparent; /* Fond transparent */
+    border: none;
+    font-size: 20px;
+    color: rgb(141, 7, 7); /* Rouge foncé */
+    cursor: pointer;
+  }
+  
+  .close-button:hover {
+    background-color: transparent; /* Ne change pas de couleur au survol */
+    color: rgb(141, 7, 7); /* Conserve le rouge foncé au survol */
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #61dafb;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #61dafb;
+  }
+  
+  input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #61dafb;
+    background-color: #333;
+    color: white;
+    font-size: 16px;
+  }
+  
+  input::placeholder {
+    color: #be8888;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #61dafb;
+    color: #282c34;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  button:hover {
+    background-color: #61dafb; /* Ne change plus de couleur au survol */
+  }
+  

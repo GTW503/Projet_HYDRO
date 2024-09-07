@@ -1,0 +1,305 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.admin-dashboard {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #1a1a2e;
+  color: white;
+  height: 100vh;
+  padding-top: 10px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+@keyframes dance {
+  0% {
+    transform: rotate(0deg) translateX(0) translateY(0);
+  }
+  20% {
+    transform: rotate(45deg) translateX(-10px) translateY(10px);
+  }
+  40% {
+    transform: rotate(-45deg) translateX(10px) translateY(-10px);
+  }
+  60% {
+    transform: rotate(90deg) translateX(-15px) translateY(5px);
+  }
+  80% {
+    transform: rotate(-90deg) translateX(15px) translateY(-5px);
+  }
+  100% {
+    transform: rotate(0deg) translateX(0) translateY(0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Logo qui danse et se stabilise */
+.logo {
+  width: 150px;
+  display: block;
+  margin: 0 auto;
+  padding: 5px 0;
+  animation: dance 2s ease-in-out, spin 3s ease infinite;
+}
+
+/* Ajout de l'animation de rotation après un délai sur le tableau de bord */
+.logo:hover {
+  animation: spin 2s infinite;
+}
+
+.brand-name {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.logo-separator {
+  border-top: 2px solid #444;
+  margin: 10px 0;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.welcome {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.separator {
+  border: 1px solid #444;
+  margin: 15px 0;
+}
+
+.sidebar-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sidebar-item:hover {
+  background-color: #333;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.logout {
+  margin-top: auto;
+  background-color: #e74c3c;
+}
+
+.dropdown-content {
+  padding-left: 25px; /* Indentation des sous-fonctionnalités */
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-content div {
+  padding: 8px;
+  cursor: pointer;
+  font-size: 14px; /* Taille de police plus petite */
+  font-weight: 500;
+  color: #c5c5c5; /* Couleur plus claire pour les sous-fonctionnalités */
+  border-left: 2px solid #007bff; /* Ligne verticale pour distinguer les sous-fonctionnalités */
+}
+
+.dropdown-content div:hover {
+  background-color: #444;
+}
+
+.main-content {
+  margin-left: 250px;
+  padding: 20px;
+  flex-grow: 1;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #eee;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar {
+  padding: 8px; /* Réduit l'espace interne (padding) */
+  border-radius: 8px; /* Réduit le rayon des coins */
+  border: 1px solid #ccc;
+  margin: 0; /* Supprime les marges externes */
+  width: calc(25% - 16px); /* Ajuste la largeur pour compenser le padding */
+  box-sizing: border-box; /* Assure que le padding et la bordure sont inclus dans la largeur totale */
+}
+
+.notifications {
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.info-box {
+  background-color: #007bff;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+  margin: 10px;
+  text-align: center;
+  min-width: 200px;
+  transition: background-color 0.3s ease;
+}
+
+.info-box h3 {
+  margin: 10px 0 5px;
+}
+
+.info-box p {
+  font-size: 24px;
+  margin: 0;
+}
+
+.info-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.info-box:hover {
+  background-color: #0056b3;
+}
+
+/*.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 4px;
+  background: white;
+  width: 80%;
+}*/
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 4px;
+  background: white;
+  width: 75%;
+}
+
+.chart-container {
+  margin-top: 40px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.charts-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  gap: 20px; /* Ajoute un espace entre les graphiques */
+}
+
+.chart {
+  flex: 1; /* Assure que chaque graphique occupe un espace égal */
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.spinner {
+  margin-top: 20px;
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+}
+/* Autres styles existants du tableau de bord admin */
+
+.station-info-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.station-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+@media print {
+  .station-info-header {
+    display: block;
+  }
+
+  .sidebar, .navbar, .modal {
+    display: none;
+  }
+
+  .save-button, .action-button {
+    display: none; /* Cache les boutons de sauvegarde et d'actions inutiles dans l'impression */
+  }
+
+  /* Assure-toi que le contenu principal est bien visible */
+  .main-content {
+    display: block;
+  }
+
+  /* Si nécessaire, ajuster la largeur pour s'assurer que tout est bien visible */
+  .table-scroll {
+    overflow: visible; /* Empêche le contenu d'être masqué par des barres de défilement */
+  }
+}

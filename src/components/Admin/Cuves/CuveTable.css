@@ -1,0 +1,60 @@
+.cuve-table-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .table-header-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .close-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .print-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .cuve-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .cuve-table th, .cuve-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .cuve-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  .cuve-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .cuve-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  

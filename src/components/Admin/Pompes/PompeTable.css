@@ -1,0 +1,90 @@
+/* PompeTable.css */
+
+.pompe-table-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    padding: 8px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .table-header-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .print-button,
+  .close-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .close-button {
+    background-color: red;
+  }
+  
+  .table-scroll {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .pompe-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  
+  .pompe-table th,
+  .pompe-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+  }
+  
+  .pompe-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .pompe-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .pompe-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .action-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  
+  .action-button .faEdit {
+    color: #007bff;
+  }
+  
+  .action-button .faTrash {
+    color: red;
+  }
+  

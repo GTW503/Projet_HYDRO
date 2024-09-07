@@ -1,0 +1,97 @@
+.create-fournisseur-container {
+    position: relative;
+    padding: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #679682;
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    color: #333;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    font-size: 20px;
+    color: #e74c3c;
+    cursor: pointer;
+    background-color: transparent;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  input,
+  select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  button {
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #041930;
+    color: rgb(33, 7, 129);
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .add-category-button {
+    background-color: #28a745;
+  }
+  
+  .add-category-button:hover {
+    background-color: #218838;
+  }
+  
+  .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: rgb(153, 180, 176);
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .save-category-button {
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  .save-category-button:hover {
+    background-color: #0056b3;
+  }
+  
