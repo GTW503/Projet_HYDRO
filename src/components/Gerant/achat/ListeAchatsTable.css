@@ -1,0 +1,60 @@
+.achat-table-container {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .achat-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .achat-table th,
+  .achat-table td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .achat-table th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .achat-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .achat-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  .no-data {
+    text-align: center;
+    color: #888;
+  }
+  
+  .action-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .edit-button {
+    color: blue;
+  }
+  
+  .delete-button {
+    color: red;
+  }
+  
+  .achat-table .row-light {
+    background-color: #eaf4ff;
+  }
+  
+  .achat-table .row-dark {
+    background-color: #d1e7ff;
+  }
+  

@@ -1,0 +1,55 @@
+.vente-table-container {
+    margin: 20px;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #0c0c0c;
+  }
+  
+  .vente-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .vente-table th, .vente-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .vente-table th {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .row-light {
+    background-color: #f2f9ff; /* Bleu très clair */
+  }
+  
+  .row-dark {
+    background-color: #e6f2ff; /* Bleu plus foncé mais toujours clair */
+  }
+  
+  .action-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .edit-button {
+    color: #007bff; /* Bleu pour le bouton de modification */
+  }
+  
+  .delete-button {
+    color: #ff4c4c; /* Rouge pour le bouton de suppression */
+  }
+  
+  .no-data {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+  }
+  

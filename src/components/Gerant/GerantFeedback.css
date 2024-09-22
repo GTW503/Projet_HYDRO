@@ -1,0 +1,105 @@
+.gerant-feedback-container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #f7f9fc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feedback-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .feedback-item {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Feedback non traité (rouge) */
+  .feedback-item.non_traite {
+    background-color: #ffe6e6;
+    border-left: 5px solid red;
+  }
+  
+  /* Feedback en cours de traitement (jaune) */
+  .feedback-item.en_cours {
+    background-color: #fff3cd;
+    border-left: 5px solid #ffc107;
+  }
+  
+  /* Feedback traité (vert) */
+  .feedback-item.traite {
+    background-color: #d4edda;
+    border-left: 5px solid #28a745;
+  }
+  
+  /* Boutons pour changer le statut */
+  .status-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .status-button {
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Bouton pour l'état "En cours de traitement" */
+  .status-button.en_cours {
+    background-color: #ffc107;
+    color: white;
+  }
+  
+  /* Bouton pour l'état "Traité" */
+  .status-button.traite {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  /* Bouton actif */
+  .status-button.active {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+  }
+  
+  /* Filtre de date */
+  .filter-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .filter-container input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .filter-container button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .loader {
+    text-align: center;
+  }
+  
+  .error-message {
+    color: red;
+    text-align: center;
+  }
+  

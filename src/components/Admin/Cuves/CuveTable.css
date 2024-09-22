@@ -41,7 +41,7 @@
   }
   
   .cuve-table th, .cuve-table td {
-    border: 1px solid #ddd;
+    border: 1px solid #1b5f7a;
     padding: 8px;
   }
   
@@ -56,5 +56,36 @@
   
   .cuve-table tr:hover {
     background-color: #f1f1f1;
+  }
+  .action-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  
+  .edit-button {
+    color: blue;
+  }
+  
+  .delete-button {
+    color: red;
+  }
+  
+  .save-button {
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .cancel-button {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
   }
   

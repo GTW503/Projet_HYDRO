@@ -28,34 +28,27 @@ interface EmployeTableProps {
   employees: Employee[];
   onEditEmployee: (employee: Employee) => void;
   onDeleteEmployee: (id: number) => void;
-  onClose: () => void; // Fonction pour fermer la table
+  onClose: () => void;
 }
 
 const EmployeTable: React.FC<EmployeTableProps> = ({ employees, onEditEmployee, onDeleteEmployee, onClose }) => {
   const [searchInput, setSearchInput] = useState('');
+  const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
 
-  // Colonnes pour la table
+  // Colonnes pour la table, seulement 4 colonnes affichées
   const columns: Column<Employee>[] = React.useMemo(
     () => [
       { Header: 'ID', accessor: 'id' },
       { Header: 'Nom', accessor: 'nom' },
       { Header: 'Prénom', accessor: 'prenom' },
       { Header: 'Date de Naissance', accessor: 'dateNaissance' },
-      { Header: 'Âge', accessor: 'age' },
-      { Header: 'Email', accessor: 'email' },
-      { Header: 'Situation Matrimoniale', accessor: 'situationMatrimoniale' },
-      { Header: 'Téléphone', accessor: 'telephone' },
-      { Header: 'Numéro de Compte', accessor: 'numeroCompte' },
-      { Header: 'Personne à Prévenir', accessor: 'personneAPrevenir' },
-      { Header: 'Téléphone Personne à Prévenir', accessor: 'telephonePersonneAPrevenir' },
-      { Header: 'Nationalité', accessor: 'nationalite' },
-      { Header: 'Numéro Matricule', accessor: 'numeroMatricule' },
-      { Header: 'Poste Occupé', accessor: 'posteOccupe' },
-      { Header: 'Numéro de Carte Identité', accessor: 'numeroCarteIdentite' },
       {
         Header: 'Actions',
         Cell: ({ row }) => (
           <div className="action-buttons">
+            <button onClick={() => setSelectedEmployee(row.original)} className="action-button">
+              Détails
+            </button>
             <button onClick={() => onEditEmployee(row.original)} className="action-button">
               <FontAwesomeIcon icon={faEdit} />
             </button>
@@ -69,19 +62,15 @@ const EmployeTable: React.FC<EmployeTableProps> = ({ employees, onEditEmployee, 
     [onEditEmployee, onDeleteEmployee]
   );
 
-  // Instancier la table avec react-table
   const tableInstance = useTable({ columns, data: employees }, useGlobalFilter, useSortBy);
 
-  // Destructurer les méthodes/fonctionnalités de la table
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, setGlobalFilter } = tableInstance;
 
-  // Gérer la recherche
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
     setGlobalFilter(e.target.value);
   };
 
-  // Imprimer la table
   const handlePrint = () => {
     window.print();
   };
@@ -138,6 +127,31 @@ const EmployeTable: React.FC<EmployeTableProps> = ({ employees, onEditEmployee, 
           </tbody>
         </table>
       </div>
+
+      {/* Affichage des détails */}
+      {selectedEmployee && (
+        <div className="employee-details-modal">
+          <div className="employee-details-content">
+            <h2>Détails de l'Employé</h2>
+            <p><strong>ID:</strong> {selectedEmployee.id}</p>
+            <p><strong>Nom:</strong> {selectedEmployee.nom}</p>
+            <p><strong>Prénom:</strong> {selectedEmployee.prenom}</p>
+            <p><strong>Date de Naissance:</strong> {selectedEmployee.dateNaissance}</p>
+            <p><strong>Âge:</strong> {selectedEmployee.age}</p>
+            <p><strong>Email:</strong> {selectedEmployee.email}</p>
+            <p><strong>Situation Matrimoniale:</strong> {selectedEmployee.situationMatrimoniale}</p>
+            <p><strong>Téléphone:</strong> {selectedEmployee.telephone}</p>
+            <p><strong>Numéro de Compte:</strong> {selectedEmployee.numeroCompte}</p>
+            <p><strong>Personne à Prévenir:</strong> {selectedEmployee.personneAPrevenir}</p>
+            <p><strong>Téléphone Personne à Prévenir:</strong> {selectedEmployee.telephonePersonneAPrevenir}</p>
+            <p><strong>Nationalité:</strong> {selectedEmployee.nationalite}</p>
+            <p><strong>Numéro Matricule:</strong> {selectedEmployee.numeroMatricule}</p>
+            <p><strong>Poste Occupé:</strong> {selectedEmployee.posteOccupe}</p>
+            <p><strong>Numéro Carte d'Identité:</strong> {selectedEmployee.numeroCarteIdentite}</p>
+            <button onClick={() => setSelectedEmployee(null)} className="close-details-button">Fermer</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

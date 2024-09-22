@@ -8,6 +8,52 @@
     box-shadow: 0px 10px 30px rgba(103, 199, 223, 0.3);
     color: rgb(173, 139, 139);
   }
+  .success-message {
+    padding: 10px;
+    background-color: #28a745; /* Vert pour succès */
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .success-message button {
+    background-color: white;
+    color: #28a745;
+    border: 1px solid #28a745;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  .success-message button:hover {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
   
   .close-button {
     position: absolute; /* Change le positionnement en absolu */

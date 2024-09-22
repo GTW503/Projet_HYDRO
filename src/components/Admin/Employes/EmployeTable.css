@@ -63,4 +63,43 @@
   .employe-table tr:hover {
     background-color: #f1f1f1;
   }
+  .employee-details-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100%;
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .employee-details-content {
+    margin-top: 20px;
+  }
+  
+  .employee-details-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .employee-details-content p {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .close-details-button {
+    display: block;
+    width: 100%;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 20px;
+  }
   

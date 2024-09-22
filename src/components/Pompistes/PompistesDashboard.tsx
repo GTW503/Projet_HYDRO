@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartPie, faChartBar, faGasPump, faFileAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import NiveauStockChart from './NiveauStockChart';
-import PompisteFeedback from './PompisteFeedback'; // Importez le composant de feedback
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import PompisteFeedback from './PompisteFeedback';
+import EnregistrerVente from './ventes/EnregistrerVente'; // Import the EnregistrerVente component
+import ListeVentesTable from './ventes/ListeVentesTable'; // Import ListeVentesTable
 import './PompisteDashboard.css';
+
+// Données de couleurs pour le diagramme circulaire
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 Modal.setAppElement('#root');
 
@@ -14,10 +18,16 @@ const PompisteDashboard: React.FC = () => {
   const [modalContent, setModalContent] = useState<string | null>(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [openSection, setOpenSection] = useState<string | null>(null);
-  const [feedbacks, setFeedbacks] = useState<string[]>([]); // État pour stocker les feedbacks
-  const navigate = useNavigate();
-
-  const dataVentes = [
+  const [feedbacks, setFeedbacks] = useState<string[]>([]);
+  const [currentTime, setCurrentTime] = useState<string>(''); 
+  const [ventes, setVentes] = useState<any[]>([]); // Liste vide par défaut
+  const [dataProduits, setDataProduits] = useState([
+    { name: 'Essence', niveau: 1500 },
+    { name: 'Diesel', niveau: 1200 },
+    { name: 'Kérosène', niveau: 800 },
+    { name: 'GPL', niveau: 600 },
+  ]); 
+  const [dataVentes, setDataVentes] = useState([
     { name: 'Lun', ventes: 30 },
     { name: 'Mar', ventes: 45 },
     { name: 'Mer', ventes: 60 },
@@ -25,7 +35,20 @@ const PompisteDashboard: React.FC = () => {
     { name: 'Ven', ventes: 75 },
     { name: 'Sam', ventes: 50 },
     { name: 'Dim', ventes: 20 },
-  ];
+  ]);
+
+  const navigate = useNavigate();
+
+  // Mettre à jour l'heure chaque seconde
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date();
+      const formattedTime = now.toLocaleTimeString('fr-FR', { hour12: false });
+      setCurrentTime(formattedTime);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const toggleSection = (section: string) => {
     setOpenSection(prev => (prev === section ? null : section));
@@ -85,6 +108,9 @@ const PompisteDashboard: React.FC = () => {
       <div className="main-content">
         <div className="navbar">
           <input type="text" placeholder="Rechercher..." className="search-bar" />
+          <div className="current-time">
+            {currentTime}
+          </div>
           <div className="notifications">
             <FontAwesomeIcon icon={faChartBar} className="notification-icon" />
           </div>
@@ -93,8 +119,27 @@ const PompisteDashboard: React.FC = () => {
         <div className="dashboard-container">
           <div className="charts-container">
             <div className="chart">
-              <NiveauStockChart />
+              <h3>Niveau des Produits</h3>
+              <ResponsiveContainer width="100%" height={300}>
+                <PieChart>
+                  <Pie
+                    data={dataProduits}
+                    dataKey="niveau"
+                    nameKey="name"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={100}
+                    label={({ name, niveau }) => `${name}: ${niveau}L`}
+                  >
+                    {dataProduits.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                </PieChart>
+              </ResponsiveContainer>
             </div>
+
             <div className="chart">
               <h3>Ventes Hebdomadaires</h3>
               <ResponsiveContainer width="100%" height={300}>
@@ -113,24 +158,14 @@ const PompisteDashboard: React.FC = () => {
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className="modal">
           <div>
             {modalContent === 'Enregistrer une Vente' && (
-              <div>
-                <h2>Enregistrer une Vente</h2>
-                <form>
-                  <label>Produit:</label>
-                  <input type="text" placeholder="Produit" required />
-                  <label>Quantité:</label>
-                  <input type="number" placeholder="Quantité" required />
-                  <label>Prix:</label>
-                  <input type="number" placeholder="Prix" required />
-                  <button type="submit">Enregistrer</button>
-                </form>
-              </div>
+              <EnregistrerVente onClose={closeModal} clients={[]} produits={[]} categories={[]} />
             )}
             {modalContent === 'Liste des Ventes' && (
-              <div>
-                <h2>Liste des Ventes</h2>
-                {/* Code pour afficher la liste des ventes */}
-              </div>
+              <ListeVentesTable
+                ventes={[]} // Liste des ventes initialement vide
+                onEditVente={(vente) => console.log('Modifier vente', vente)}
+                onDeleteVente={(id) => console.log('Supprimer vente', id)}
+              />
             )}
             {modalContent === 'FeedbackStock' && (
               <PompisteFeedback onFeedbackSubmit={handleFeedbackSubmit} onClose={closeModal} />

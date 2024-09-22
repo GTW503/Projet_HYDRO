@@ -1,67 +1,58 @@
 .fournisseur-table-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-  }
-  
-  .table-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .table-header-actions {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .close-button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .print-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .fournisseur-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .fournisseur-table th,
-  .fournisseur-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  .fournisseur-table th {
-    background-color: #f2f2f2;
-    text-align: left;
-  }
-  
-  .fournisseur-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  .fournisseur-table tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  .action-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin: 0 5px;
-  }
-  
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.print-button, .close-button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.close-button {
+  background-color: #dc3545; /* rouge pour fermer */
+}
+
+.fournisseur-table {
+  width: 100%;
+  border-collapse: collapse; /* Assure que les bordures se rejoignent sans espace */
+  border: 2px solid #333; /* Bordure principale autour du tableau */
+}
+
+.fournisseur-table th, .fournisseur-table td {
+  background-color: rgb(3, 161, 252); /* Couleur bleu clair pour les en-têtes */
+  color: white; /* Couleur du texte blanche pour les en-têtes */
+  padding: 10px;
+  text-align: left;
+  border: 2px solid #ddd; /* Bordure claire pour chaque cellule */
+}
+
+.fournisseur-table td {
+  background-color: white; /* Couleur de fond blanche pour les cellules de données */
+  color: #333; /* Couleur du texte pour les données */
+  border: 2px solid #ddd; /* Bordure pour chaque cellule */
+}
+
+.fournisseur-table tr:nth-child(even) {
+  background-color: #f9f9f9; /* Alternance de couleur pour chaque ligne paire */
+}
+
+.fournisseur-table tr:hover {
+  background-color: #f1f1f1; /* Changement de couleur lors du survol d'une ligne */
+}
+
+.no-data {
+  text-align: center;
+  color: #888;
+}

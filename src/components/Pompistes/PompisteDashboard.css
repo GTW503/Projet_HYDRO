@@ -98,13 +98,21 @@ html, body {
   }
   
   .search-bar {
+    width: 200px; /* Taille ajustée pour laisser de la place à l'horloge */
     padding: 8px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    margin: 0;
-    width: calc(25% - 16px);
-    box-sizing: border-box;
+    margin-right: 10px;
   }
+  
+  .current-time {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-right: 20px;
+  }
+  
+  .notifications {
+    display: inline-block;
+  }
+  
   
   .charts-container {
     display: flex;

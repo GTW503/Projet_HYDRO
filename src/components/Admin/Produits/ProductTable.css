@@ -41,6 +41,14 @@
     margin: 0 5px;
   }
   
+  .action-button.edit {
+    color: blue; /* Bouton modifier en bleu */
+  }
+  
+  .action-button.delete {
+    color: red; /* Bouton supprimer en rouge */
+  }
+  
   .product-table {
     width: 100%;
     border-collapse: collapse;
@@ -48,12 +56,12 @@
   
   .product-table th,
   .product-table td {
-    border: 1px solid #ac9d9d;
+    border: 1px solid #e4cdcd;
     padding: 8px;
   }
   
   .product-table th {
-    background-color: #f2f2f2;
+    background-color: #778dbd;
     text-align: left;
   }
   
@@ -70,4 +78,61 @@
     border-radius: 4px;
     border: 1px solid #ccc;
   }
-  
+  /* Overlay for modals */
+.ReactModal__Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Loading and error messages */
+.loading-message,
+.error-message {
+  text-align: center;
+  padding: 10px;
+  font-size: 1.2em;
+}
+
+.loading-message {
+  color: #007bff;
+}
+
+.error-message {
+  color: #dc3545;
+}
+.modal-buttons {
+  display: flex;
+  justify-content: center; /* This centers the buttons horizontally */
+  gap: 20px; /* Adds some space between the buttons */
+  margin-top: 20px; /* Adds some space above the buttons */
+}
+
+.delete-button {
+  background-color:  rgb(209, 17, 17);
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.cancel-button {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.delete-button:hover {
+  background-color: rgb(209, 17, 17);
+}
+
+.cancel-button:hover {
+  background-color: darkgreen;
+}

@@ -64,4 +64,37 @@
     cursor: pointer;
     margin: 0 5px;
   }
+  .low-stock {
+    background-color: rgba(255, 0, 0, 0.1);
+    color: red;
+  }
+  
+  .action-button {
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  
+  .a4-modal {
+    width: 100%;
+    max-width: 210mm; /* A4 width */
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .a4-modal p {
+    margin-bottom: 10px;
+  }
+  
+  .delete-button {
+    background-color: red;
+    color: white;
+    padding: 10px;
+  }
+  
+  .cancel-button {
+    background-color: green;
+    color: white;
+    padding: 10px;
+  }
   
