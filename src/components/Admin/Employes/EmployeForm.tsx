@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import 'react-phone-input-2/lib/style.css'; // Importer le style CSS
-import PhoneInput from 'react-phone-input-2';
-import './EmployeForm.css';
+import { useNavigate } from 'react-router-dom'; // Importation de useNavigate pour la redirection
+import PhoneInput from 'react-phone-input-2'; // Importation de PhoneInput pour la gestion des numéros de téléphone
+import 'react-phone-input-2/lib/style.css';  // Styles pour PhoneInput
+import './EmployeForm.css';  // Styles CSS
+import createApiInstance from '../../../services/axiosConfig';  // Importation d'Axios configuré
 
 const EmployeForm: React.FC = () => {
   const [nom, setNom] = useState('');
@@ -12,64 +14,123 @@ const EmployeForm: React.FC = () => {
   const [situationMatrimoniale, setSituationMatrimoniale] = useState('');
   const [numeroCompte, setNumeroCompte] = useState('');
   const [personneAPrevenir, setPersonneAPrevenir] = useState('');
-  const [numeroPersonne, setNumeroPersonne] = useState('');
+  const [telephonePersonneAPrevenir, setTelephonePersonneAPrevenir] = useState('');
   const [nationalite, setNationalite] = useState('');
   const [numeroMatricule, setNumeroMatricule] = useState('');
   const [posteOccupe, setPosteOccupe] = useState('');
   const [numeroCarteIdentite, setNumeroCarteIdentite] = useState('');
-  const [photo, setPhoto] = useState<File | null>(null);
+  const [photo, setPhoto] = useState<File | null>(null);  // Pour la gestion de la photo
   const [motDePasse, setMotDePasse] = useState('');
   const [confirmationMotDePasse, setConfirmationMotDePasse] = useState('');
   const [telephone, setTelephone] = useState('');
-  const [telephonePersonneAPrevenir, setTelephonePersonneAPrevenir] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
-  // Fonction pour calculer l'âge
+  const api = createApiInstance('admin/employes');  // Instance Axios pour communiquer avec le backend
+  const navigate = useNavigate();  // Pour la redirection après soumission
+
+  // Calcul de l'âge à partir de la date de naissance
   const calculateAge = (date: string) => {
-    const birthYear = new Date(date).getFullYear();
-    const currentYear = new Date().getFullYear();
-    return currentYear - birthYear;
+    const birthDate = new Date(date);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return age;
   };
 
-  // Fonction pour générer un numéro matricule
+  // Générer un numéro matricule en fonction du nom
   const generateNumeroMatricule = (name: string) => {
-    const letters = name.slice(0, 2).toUpperCase();
-    const randomNumbers = Math.floor(100 + Math.random() * 900); // Génère un nombre aléatoire entre 100 et 999
-    return `${letters}${randomNumbers}`;
+    const initials = name.slice(0, 2).toUpperCase();
+    const randomNumbers = Math.floor(100 + Math.random() * 900);
+    return `${initials}${randomNumbers}`;
   };
 
-  // Gérer le changement du nom pour générer le numéro matricule
+  // Mettre à jour le numéro matricule en fonction du nom
   useEffect(() => {
     if (nom) {
       setNumeroMatricule(generateNumeroMatricule(nom));
     }
   }, [nom]);
 
-  // Fonction pour gérer la soumission du formulaire
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Valider les champs obligatoires et gérer la logique de soumission
+  // Mettre à jour l'âge lorsque la date de naissance change
+  const handleDateNaissanceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const date = e.target.value;
+    setDateNaissance(date);
+    setAge(calculateAge(date));
   };
 
-  // Fonction pour gérer la sélection d'une photo
-  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setPhoto(e.target.files[0]);
+  // Gestion de la soumission du formulaire
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Vérification que les mots de passe correspondent
+    if (motDePasse !== confirmationMotDePasse) {
+      setErrorMessage("Les mots de passe ne correspondent pas");
+      return;
+    }
+
+    const formData = new FormData();  // Utilisation de FormData pour inclure la photo et les autres champs
+    formData.append('nom', nom);
+    formData.append('prenom', prenom);
+    formData.append('dateNaissance', dateNaissance);
+    formData.append('age', age.toString());
+    formData.append('email', email);
+    formData.append('situationMatrimoniale', situationMatrimoniale);
+    formData.append('numeroCompte', numeroCompte);
+    formData.append('personneAPrevenir', personneAPrevenir);
+    formData.append('telephonePersonneAPrevenir', telephonePersonneAPrevenir);
+    formData.append('nationalite', nationalite);
+    formData.append('numeroMatricule', numeroMatricule);
+    formData.append('posteOccupe', posteOccupe);
+    formData.append('numeroCarteIdentite', numeroCarteIdentite);
+    formData.append('motDePasse', motDePasse);
+    formData.append('telephone', telephone);
+
+    // Ajout de la photo à FormData si elle est présente
+    if (photo) {
+      formData.append('photo', photo);
+    }
+
+    try {
+      const response = await api.post('/index.php', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      setSuccessMessage('Employé créé avec succès!');
+      setErrorMessage('');  // Effacer les erreurs en cas de succès
+      console.log('Employé créé avec succès:', response.data);
+
+      // Redirection après soumission réussie
+      navigate('/admin');
+    } catch (error) {
+      console.error('Erreur lors de la création de l\'employé:', error);
+      setErrorMessage("Erreur lors de la création de l'employé");
     }
   };
 
-  // Gérer le changement de date de naissance pour calculer l'âge
-  const handleDateNaissanceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDateNaissance(e.target.value);
-    setAge(calculateAge(e.target.value));
+  // Gestion de la sélection de la photo
+  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setPhoto(e.target.files[0]);  // Stocker la photo dans l'état
+    }
   };
 
   return (
     <div className="employe-form-container">
-      <form onSubmit={handleSubmit} className="employe-form">
       <button type="button" className="close-button" onClick={() => navigate('/admin')}>
-          &#x2716; {/* Utiliser l'entité HTML pour afficher une croix */}
-        </button>
+        &#x2716; {/* Bouton pour fermer le formulaire */}
+      </button>
+
+      <form onSubmit={handleSubmit} className="employe-form">
         <h2>Formulaire de gestion des Employés</h2>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {successMessage && <p className="success-message">{successMessage}</p>}
+
         <div className="form-row">
           <label>
             Nom:
@@ -80,6 +141,7 @@ const EmployeForm: React.FC = () => {
             <input type="text" value={prenom} onChange={(e) => setPrenom(e.target.value)} required />
           </label>
         </div>
+
         <div className="form-row">
           <label>
             Date de Naissance:
@@ -87,9 +149,10 @@ const EmployeForm: React.FC = () => {
           </label>
           <label>
             Âge:
-            <input type="number" value={age} readOnly />
+            <input type="int" value={age} readOnly />
           </label>
         </div>
+
         <div className="form-row">
           <label>
             Adresse Email:
@@ -105,6 +168,7 @@ const EmployeForm: React.FC = () => {
             </select>
           </label>
         </div>
+
         <div className="form-row">
           <label>
             Numéro de Téléphone:
@@ -122,6 +186,7 @@ const EmployeForm: React.FC = () => {
             <input type="text" value={numeroCompte} onChange={(e) => setNumeroCompte(e.target.value)} required />
           </label>
         </div>
+
         <div className="form-row">
           <label>
             Personne à Prévenir:
@@ -139,12 +204,14 @@ const EmployeForm: React.FC = () => {
             />
           </label>
         </div>
+
         <div className="form-row">
           <label>
             Nationalité:
             <input type="text" value={nationalite} onChange={(e) => setNationalite(e.target.value)} required />
           </label>
         </div>
+
         <div className="form-row">
           <label>
             Numéro Matricule:
@@ -160,6 +227,7 @@ const EmployeForm: React.FC = () => {
             </select>
           </label>
         </div>
+
         <div className="form-row">
           <label>
             Numéro de Carte Nationale d'Identité:
@@ -170,6 +238,7 @@ const EmployeForm: React.FC = () => {
             <input type="file" onChange={handlePhotoChange} required />
           </label>
         </div>
+
         <div className="form-row">
           <label>
             Mot de Passe:
@@ -180,6 +249,7 @@ const EmployeForm: React.FC = () => {
             <input type="password" value={confirmationMotDePasse} onChange={(e) => setConfirmationMotDePasse(e.target.value)} required />
           </label>
         </div>
+
         <button type="submit" className="submit-button">Enregistrer</button>
       </form>
     </div>
